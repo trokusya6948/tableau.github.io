@@ -1,5 +1,6 @@
 // DOMの準備ができたら実行。$(document).readyと同義
 $(async function(){
+	/*
     // Tableau拡張の初期化処理
     await tableau.extensions.initializeAsync();
 
@@ -26,7 +27,7 @@ $(async function(){
 
     // DOMを操作
     buildDataSourcesTable(dashboardDataSources);
-    
+    */
     // 画面の解像度を表示
     showResolution();
 });
