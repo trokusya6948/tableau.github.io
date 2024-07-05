@@ -26,6 +26,9 @@ $(async function(){
 
     // DOMを操作
     buildDataSourcesTable(dashboardDataSources);
+    
+    // 画面の解像度を表示
+    showResolution();
 });
 
 // データソース名とデータソース更新ボタンを<table>に追加
@@ -48,4 +51,27 @@ function buildDataSourcesTable(dataSources) {
         nameCell.innerHTML = dataSource.name;
         refreshCell.appendChild(refreshButton);
     }
+}
+
+
+// 画面解像度を表示する
+function showResolution() {
+    // 画面の解像度を取得
+    var screenWidth = window.screen.width;
+    var screenHeight = window.screen.height;
+
+    // 取得した解像度を画面に表示するためのHTML要素を作成
+    var resolutionDisplay = document.createElement('div');
+    resolutionDisplay.style.position = 'fixed';
+    resolutionDisplay.style.top = '10px';
+    resolutionDisplay.style.left = '10px';
+    resolutionDisplay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+    resolutionDisplay.style.color = 'white';
+    resolutionDisplay.style.padding = '10px';
+    resolutionDisplay.style.borderRadius = '5px';
+    resolutionDisplay.style.zIndex = '1000';
+    resolutionDisplay.innerHTML = 'Screen Resolution: ' + screenWidth + ' x ' + screenHeight;
+
+    // HTML要素をボディに追加して表示
+    document.body.appendChild(resolutionDisplay);
 }
