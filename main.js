@@ -133,28 +133,28 @@ function displayDashboardProperties() {
 }
 
 /**
- * ダッシュボードオブジェクトの位置を更新する関数
+ * ダッシュボードシートの位置を更新する関数
  */
-function updateDashboardObjectPosition() {
+function updateSheetPosition() {
     const dashboard = tableau.extensions.dashboardContent.dashboard;
 
-    dashboard.objects.forEach(function (obj) {
-        if (obj.type === tableau.DashboardObjectType.WORKSHEET) {
-            const update = {
-                dashboardObjectId: obj.id,
-                position: {
-                    x: 100,
-                    y: 100,
-                    width: 500,
-                    height: 500
-                }
-            };
+    dashboard.worksheets.forEach(function (worksheet) {
+        // 新しい位置とサイズを設定
+        const update = {
+            position: {
+                x: 100,
+                y: 100
+            },
+            size: {
+                width: 500,
+                height: 500
+            }
+        };
 
-            dashboard.updateDashboardObjectPosition(update).then(() => {
-                console.log(`Updated position of object ${obj.id}`);
-            }).catch(function (err) {
-                console.error('Error updating object position:', err);
-            });
-        }
+        // シートの位置とサイズを更新
+        worksheet.position = update.position;
+        worksheet.size = update.size;
+
+        console.log(`Updated position and size of worksheet ${worksheet.name}`);
     });
 }
