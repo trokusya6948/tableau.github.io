@@ -101,25 +101,22 @@ function displayDashboardProperties() {
         width: dashboard.size.width
     };
 
-    // ダッシュボードのオブジェクト情報を取得
-    let objectsInfo = [];
-    dashboard.objects.forEach(function (obj) {
-        if (obj.type === tableau.DashboardObjectType.WORKSHEET) {
-            objectsInfo.push({
-                id: obj.id,
-                name: obj.name,
-                x: obj.position.x,
-                y: obj.position.y,
-                width: obj.size.width,
-                height: obj.size.height
-            });
-        }
+    // ダッシュボードのシート情報を取得
+    let sheetsInfo = [];
+    dashboard.worksheets.forEach(function (worksheet) {
+        sheetsInfo.push({
+            name: worksheet.name,
+            type: worksheet.sheetType,
+            id: worksheet.id,
+            position: worksheet.position,
+            size: worksheet.size
+        });
     });
 
     // ダッシュボードの情報をコンソールに出力
     console.log('Dashboard Name:', dashboardName);
     console.log('Dashboard Size:', dashboardSize);
-    console.log('Objects Info:', objectsInfo);
+    console.log('Sheets Info:', sheetsInfo);
 
     // ダッシュボードの情報を画面に表示
     document.getElementById('content').innerHTML = `
@@ -130,9 +127,9 @@ function displayDashboardProperties() {
         <div class="property">
             <strong>Size:</strong> ${dashboardSize.width} x ${dashboardSize.height}
         </div>
-        <h3>Objects:</h3>
+        <h3>Sheets:</h3>
         <ul class="sheets-list">
-            ${objectsInfo.map(obj => `<li><strong>${obj.name}</strong> (ID: ${obj.id}, X: ${obj.x}, Y: ${obj.y}, Width: ${obj.width}, Height: ${obj.height})</li>`).join('')}
+            ${sheetsInfo.map(sheet => `<li><strong>${sheet.name}</strong> (ID: ${sheet.id}, X: ${sheet.position.x}, Y: ${sheet.position.y}, Width: ${sheet.size.width}, Height: ${sheet.size.height})</li>`).join('')}
         </ul>
     `;
 }
