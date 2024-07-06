@@ -89,7 +89,6 @@ function showResolution() {
  * ダッシュボードのプロパティ情報を取得して表示する関数
  */
 function displayDashboardProperties() {
-
     const dashboard = tableau.extensions.dashboardContent.dashboard;
 
     // ダッシュボードの基本プロパティを取得
@@ -117,10 +116,14 @@ function displayDashboardProperties() {
     // ダッシュボードの情報を画面に表示
     document.getElementById('content').innerHTML = `
         <h2>Dashboard Properties</h2>
-        <p><strong>Name:</strong> ${dashboardName}</p>
-        <p><strong>Size:</strong> ${dashboardSize.width} x ${dashboardSize.height}</p>
+        <div class="property">
+            <strong>Name:</strong> ${dashboardName}
+        </div>
+        <div class="property">
+            <strong>Size:</strong> ${dashboardSize.width} x ${dashboardSize.height}
+        </div>
         <h3>Sheets:</h3>
-        <ul>
+        <ul class="sheets-list">
             ${sheetsInfo.map(sheet => `<li><strong>${sheet.name}</strong> (Type: ${sheet.type}, Visible: ${sheet.isVisible})</li>`).join('')}
         </ul>
     `;

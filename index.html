@@ -1,30 +1,25 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>画面解像度の表示</title>
-
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <!-- Tableau Extention API -->
-    <!-- CDNの情報はhttps://community.tableau.com/s/question/0D54T000006B4NASA0/tableau-extension-cdn-->
-    <script src="https://extensions.tableauusercontent.com/resources/tableau.extensions.1.latest.min.js"></script>
-    
-    <!-- 自分のスクリプト -->
-    <script src="main.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau Dashboard Properties</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; color: #333; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        h1, h2, h3 { text-align: center; }
+        .property { margin-bottom: 15px; }
+        .property strong { display: block; margin-bottom: 5px; }
+        .sheets-list { list-style: none; padding: 0; }
+        .sheets-list li { background: #f9f9f9; margin: 5px 0; padding: 10px; border-radius: 5px; border: 1px solid #ddd; }
+    </style>
 </head>
-
 <body>
-    <div class="container" />
-	
-	<div id="content" />
-ver5
+    <div class="container">
+        <h1>Tableau Extension API Example</h1>
+        <div id="content"></div>
+    </div>
+    <script src="https://tableau.github.io/extensions-api/lib/tableau-extensions-1.5.0.js"></script>
+    <script src="main.js"></script>
 </body>
-
 </html>
