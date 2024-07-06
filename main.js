@@ -107,8 +107,6 @@ function displayDashboardProperties() {
         sheetsInfo.push({
             name: worksheet.name,
             type: worksheet.sheetType,
-            id: worksheet.id,
-            position: worksheet.position,
             size: worksheet.size
         });
     });
@@ -129,7 +127,7 @@ function displayDashboardProperties() {
         </div>
         <h3>Sheets:</h3>
         <ul class="sheets-list">
-            ${sheetsInfo.map(sheet => `<li><strong>${sheet.name}</strong> (ID: ${sheet.id}, X: ${sheet.position.x}, Y: ${sheet.position.y}, Width: ${sheet.size.width}, Height: ${sheet.size.height})</li>`).join('')}
+            ${sheetsInfo.map(sheet => `<li><strong>${sheet.name}</strong> (ID: ${sheet.type}, Width: ${sheet.size.width}, Height: ${sheet.size.height})</li>`).join('')}
         </ul>
     `;
 }
