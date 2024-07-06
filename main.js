@@ -141,10 +141,6 @@ function updateSheetPosition() {
     dashboard.worksheets.forEach(function (worksheet) {
         // 新しい位置とサイズを設定
         const update = {
-            position: {
-                x: 100,
-                y: 100
-            },
             size: {
                 width: 500,
                 height: 500
@@ -152,7 +148,6 @@ function updateSheetPosition() {
         };
 
         // シートの位置とサイズを更新
-        worksheet.position = update.position;
         worksheet.size = update.size;
 
         console.log(`Updated position and size of worksheet ${worksheet.name}`);
