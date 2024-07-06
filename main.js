@@ -33,7 +33,7 @@ $(async function(){
     showResolution();
     
     //ダッシュボードのプロパティ情報を表示
-     displayDashboardProperties();
+    displayDashboardProperties();
 });
 
 /*
@@ -87,6 +87,10 @@ function showResolution() {
  * ダッシュボードのプロパティ情報を取得して表示する関数
  */
 function displayDashboardProperties() {
+
+    // Tableau拡張の初期化処理
+    await tableau.extensions.initializeAsync();
+    
     const dashboard = tableau.extensions.dashboardContent.dashboard;
 
     // ダッシュボードの基本プロパティを取得
