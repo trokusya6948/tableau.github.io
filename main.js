@@ -36,6 +36,9 @@ $(async function(){
     
     //ダッシュボードのプロパティ情報を表示
     displayDashboardProperties();
+    
+    //オブジェクトの位置を更新
+    updateDashboardObjectPosition();
 });
 
 /*
@@ -128,4 +131,31 @@ function displayDashboardProperties() {
             ${sheetsInfo.map(sheet => `<li><strong>${sheet.name}</strong> (Type: ${sheet.type}, Visible: ${sheet.isVisible})</li>`).join('')}
         </ul>
     `;
+}
+
+/**
+ * ダッシュボードオブジェクトの位置を更新する関数
+ */
+function updateDashboardObjectPosition() {
+    const dashboard = tableau.extensions.dashboardContent.dashboard;
+
+    dashboard.objects.forEach(function (obj) {
+        if (obj.type === tableau.DashboardObjectType.WORKSHEET) {
+            const update = {
+                dashboardObjectId: obj.id,
+                position: {
+                    x: 100,
+                    y: 100,
+                    width: 500,
+                    height: 500
+                }
+            };
+
+            dashboard.updateDashboardObjectPosition(update).then(() => {
+                console.log(`Updated position of object ${obj.id}`);
+            }).catch(function (err) {
+                console.error('Error updating object position:', err);
+            });
+        }
+    });
 }
